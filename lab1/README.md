@@ -22,7 +22,7 @@
 
 1. [Часть 1](part1/src/test/java/itmo/lab1/SinSeriesTest.java)
 2. [Часть 2](part2/src/test/java/itmo/lab1/SkewHeapTest.java)
-3. 
+3. [Часть 3](part3/src/test/java/itmo/lab1/StoryTest.java)
 
 ## Вопросы к защите лабораторной работы:
 

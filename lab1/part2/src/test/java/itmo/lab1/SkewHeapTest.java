@@ -20,7 +20,7 @@ public class SkewHeapTest {
     }
 
     @Test
-    @DisplayName("🧪 merge(null, node) (hits P1) 🥼")
+    @DisplayName("merge(null, node) (hits P1) 🧪 ")
     void mergeNullLeft(){
         SkewHeap sh = new SkewHeap(10);
         Node b = sh.root();
@@ -31,7 +31,7 @@ public class SkewHeapTest {
     }
 
     @Test 
-    @DisplayName("🧪 merge(node, null) (hits P2) 🥼")
+    @DisplayName("merge(node, null) (hits P2) 🧪 ")
     void mergeNullRight(){
         SkewHeap sh = new SkewHeap(10);
         Node b = sh.root();
@@ -42,7 +42,7 @@ public class SkewHeapTest {
     } 
 
     @Test
-    @DisplayName("🧪 merge keeps root when a.key <= b.key (hits P3N) 🥼")
+    @DisplayName("merge keeps root when a.key <= b.key (hits P3N) 🧪 ")
     void mergeNoSwap(){
         Node a = new Node(5);
         Node b = new Node(9);
@@ -57,7 +57,7 @@ public class SkewHeapTest {
     }
 
     @Test
-    @DisplayName("🧪 merge swaps root when a.key > b.key (hits P3) 🥼")
+    @DisplayName("merge swaps root when a.key > b.key (hits P3) 🧪 ")
     void mergeWithSwap(){
         Node a = new Node(9);
         Node b = new Node(5);
@@ -71,7 +71,7 @@ public class SkewHeapTest {
     }
 
     @Test
-    @DisplayName("🧪 merge deeper recursion (hits P4 twice) 🥼")
+    @DisplayName("merge deeper recursion (hits P4 twice) 🧪 ")
     void mergeDeeperRecursion() {
         // a = 3 with right = 8
         Node a = new Node(3);
@@ -90,7 +90,7 @@ public class SkewHeapTest {
     }
 
     @Test
-    @DisplayName("🧪 remove min node from heap 🥼")
+    @DisplayName("remove min node from heap 🧪 ")
     void removeMinNode(){
         SkewHeap sh = new SkewHeap(0);
         Node root = sh.root();

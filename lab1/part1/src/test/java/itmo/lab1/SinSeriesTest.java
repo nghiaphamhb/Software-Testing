@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class SinSeriesTest {
     @Test
-    @DisplayName("🧪 sin(0) = 0.0 🥼")
+    @DisplayName(" sin(0) = 0.0 🧪 ")
     void testZero() {
         double eps = 1e-12;
         double result = SinSeries.calculate(0.0, eps);
@@ -16,7 +16,7 @@ public class SinSeriesTest {
     }
 
     @Test
-    @DisplayName("🧪 Special angles: pi/2, pi, -pi/2, -pi 🥼")
+    @DisplayName(" Special angles: pi/2, pi, -pi/2, -pi 🧪 ")
     void testSpecialAngles() {
         double eps = 1e-12;
         double delta = 1e-10;
@@ -28,7 +28,7 @@ public class SinSeriesTest {
     }
 
     @Test
-    @DisplayName("🧪 Compare with Math.sin for several points 🥼")
+    @DisplayName(" Compare with Math.sin for several points 🧪 ")
     void testAgainstMathSin(){
         double[] tries = {-3, -1, -0.1, 0.1, 1, 2, 3};
         double eps = 1e-12;
@@ -40,7 +40,7 @@ public class SinSeriesTest {
     }
 
     @Test
-    @DisplayName("🧪 Odd property: sin(-x) = -sin(x) 🥼")
+    @DisplayName(" Odd property: sin(-x) = -sin(x) 🧪 ")
     void testOddProperty() {
         double eps = 1e-12;
         double delta = 1e-10;
@@ -52,7 +52,7 @@ public class SinSeriesTest {
     }
 
     @Test
-    @DisplayName("🧪 Periodicity property: sin(x + 2pi) = sin(x) 🥼")
+    @DisplayName(" Periodicity property: sin(x + 2pi) = sin(x) 🧪 ")
     void testPeriodicity() {
         double eps = 1e-12;
         double delta = 1e-10;
@@ -64,14 +64,14 @@ public class SinSeriesTest {
     }
 
     @Test
-    @DisplayName("🧪 Invalid eps should throw 🥼")
+    @DisplayName(" Invalid eps should throw 🧪 ")
     void testInvalidEps() {
         assertThrows(IllegalArgumentException.class, () -> SinSeries.calculate(1.0, 0.0));
         assertThrows(IllegalArgumentException.class, () -> SinSeries.calculate(1.0, -1e-3));
     }
 
     @Test
-    @DisplayName("🧪 Bigger eps gives rougher accuracy 🥼")
+    @DisplayName(" Bigger eps gives rougher accuracy 🧪 ")
     void testBiggerEps() {
         double x = 1.0;
         double eps = 1e-3;

@@ -6,3 +6,5 @@ The course is designed to learn the basics of software testing. The basics of te
 <p align="center">
   <img src="assets/root.gif" alt="just keep testing" width="100%" height="300px">
 </p>
+
+[First lab](lab1)
