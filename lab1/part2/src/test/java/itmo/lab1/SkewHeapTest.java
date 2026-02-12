@@ -3,6 +3,7 @@ package itmo.lab1;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -101,4 +102,48 @@ public class SkewHeapTest {
         assertEquals(0, min);
         assertEquals(List.of("P1"), tr.steps());
     }
+
+    @Test
+    @DisplayName("empty heap then insert should make it non-empty 🧪")
+    void emptyThenInsert() {
+        SkewHeap sh = new SkewHeap();
+        assertTrue(sh.isEmpty());
+
+        Tracer tr = new Tracer();
+        sh.insert(7, tr);
+
+        assertFalse(sh.isEmpty());
+        assertEquals(7, sh.root().key);
+    }
+
+    @Test
+    @DisplayName("removeMin on empty heap should throw 🧪")
+    void removeMinEmptyThrows() {
+        SkewHeap sh = new SkewHeap();
+        Tracer tr = new Tracer();
+
+        assertThrows(IllegalStateException.class, () -> sh.removeMin(tr));
+    }
+
+    @Test
+    @DisplayName("merge should work when tracer is null 🧪")
+    void mergeWithNullTracer() {
+        Node a = new Node(2);
+        Node b = new Node(1);
+
+        Node r = SkewHeap.merge(a, b, null);
+
+        assertEquals(1, r.key);
+    }
+
+    @Test
+    @DisplayName("merge null cases with tracer null 🧪")
+    void mergeNullCasesWithNullTracer() {
+        SkewHeap sh = new SkewHeap(10);
+        Node b = sh.root();
+
+        assertSame(b, SkewHeap.merge(null, b, null));
+        assertSame(b, SkewHeap.merge(b, null, null));
+    }
+
 }

@@ -1,7 +1,9 @@
 package itmo.lab1;
 
-public class SinSeries 
+public final class SinSeries 
 {
+    private SinSeries(){}
+    
     public static double calculate(double x, double eps){
         if (eps <= 0) throw new IllegalArgumentException("eps must be > 0");
 

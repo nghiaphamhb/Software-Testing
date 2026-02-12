@@ -17,6 +17,6 @@ public final class Car {
     public int currentGear() { return currentGear; }
     public EngineState engineState() { return engineState; }
 
-    void setCurrentGear(int gear) { this.currentGear = gear; }
-    void setEngineState(EngineState state) { this.engineState = state; }
+    public void setCurrentGear(int gear) { this.currentGear = gear; }
+    public void setEngineState(EngineState state) { this.engineState = state; }
 }

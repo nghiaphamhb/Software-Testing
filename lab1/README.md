@@ -37,3 +37,11 @@
 * Регрессионное тестирование.
 * Библиотека JUnit. Особенности API. Класс `junit.framework.Assert`.
 * Отличия JUnit 3 от JUnit 4.
+
+## Note
+
+Create report in target/site/**:
+```bash
+mvn clean verify site
+```
+Open index.html with Live Server to see the report

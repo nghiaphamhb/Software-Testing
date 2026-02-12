@@ -99,4 +99,84 @@ public class StoryTest{
         assertThrows(IllegalArgumentException.class, () -> new Remark(-1));
         assertThrows(IllegalArgumentException.class, () -> new Remark(101));
     }
+
+    @Test
+    @DisplayName("Car: constructor sets 🧪")
+    void carConstructorSetsDefaults() {
+        Car car = new Car(4);
+        assertEquals(4, car.currentGear());
+        assertEquals(EngineState.NORMAL, car.engineState());
+    }
+
+    @Test
+    @DisplayName("Car: update gear and engine state 🧪")
+    void carSettersUpdateState() {
+        Car car = new Car(1);
+
+        car.setCurrentGear(3);
+        car.setEngineState(EngineState.STRESSED); 
+
+        assertEquals(3, car.currentGear());
+        assertEquals(EngineState.STRESSED, car.engineState());
+    }
+
+    @Test
+    @DisplayName("FordPrefect: remark impact >= 70 🧪")
+    void fordRemarkHighImpact() {
+        FordPrefect ford = new FordPrefect();
+        Remark r = new Remark(70);
+
+        Experience e = ford.hearRemark(r);
+
+        assertEquals(Emotion.SHOCKED, e.emotion());
+        assertEquals(80, e.shockLevel());
+    }
+
+    @Test
+    @DisplayName("FordPrefect: 30 <= remark impact < 70 🧪")
+    void fordRemarkMediumImpact() {
+        FordPrefect ford = new FordPrefect();
+        Remark r = new Remark(30);
+
+        Experience e = ford.hearRemark(r);
+
+        assertEquals(Emotion.PROUD, e.emotion());
+        assertEquals(10, e.shockLevel());
+    }
+
+    @Test
+    @DisplayName("FordPrefect: remark impact < 30 🧪")
+    void fordRemarkLowImpact() {
+        FordPrefect ford = new FordPrefect();
+        Remark r = new Remark(29);
+
+        Experience e = ford.hearRemark(r);
+
+        assertEquals(Emotion.PROUD, e.emotion());
+        assertEquals(0, e.shockLevel());
+    }
+
+    @Test
+    @DisplayName("Experience: accepts shockLevel boundaries 0 and 100 🧪")
+    void experienceAcceptsBoundaryValues() {
+        Experience e0 = new Experience(Emotion.PROUD, 0);
+        assertEquals(0, e0.shockLevel());
+
+        Experience e100 = new Experience(Emotion.SHOCKED, 100);
+        assertEquals(100, e100.shockLevel());
+    }
+
+    @Test
+    @DisplayName("Experience: throws when shockLevel is < 0 🧪")
+    void experienceThrowsWhenShockLevelNegative() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Experience(Emotion.PROUD, -1));
+    }
+
+    @Test
+    @DisplayName("Experience: throws when shockLevel is > 100 🧪")
+    void experienceThrowsWhenShockLevelTooHigh() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Experience(Emotion.PROUD, 101));
+    }
 }

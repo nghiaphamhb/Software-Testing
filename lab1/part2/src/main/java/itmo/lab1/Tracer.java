@@ -20,9 +20,4 @@ public class Tracer {
     public List<String> steps() {
         return steps;
     }    
-
-    @Override
-    public String toString() {
-        return String.join("->", steps);
-    }
 }
