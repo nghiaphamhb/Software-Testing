@@ -9,11 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # - remote: set in GitHub Secrets
-      # - local: export NVD_API_KEY in terminal or get from secret file
       NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
-
-      # dir to cache data into it
       DC_DATA_DIR: ${{ github.workspace }}/.dc-data
 
     steps:
@@ -34,7 +30,6 @@ jobs:
           chmod +x ./mvnw || true
           bash ./mvnw -v
 
-      # Cache Dependency-Check data dir
       - name: Cache Dependency-Check data
         uses: actions/cache@v4
         with:
@@ -44,6 +39,8 @@ jobs:
             dependency-check-${{ runner.os }}-
 
       - name: Dependency-Check (part1)
+        id: dc1
+        continue-on-error: true
         shell: bash
         run: |
           bash ./mvnw -B -f lab1/part1/pom.xml org.owasp:dependency-check-maven:check \
@@ -55,6 +52,8 @@ jobs:
             -DfailBuildOnCVSS=7
 
       - name: Dependency-Check (part2)
+        id: dc2
+        continue-on-error: true
         shell: bash
         run: |
           bash ./mvnw -B -f lab1/part2/pom.xml org.owasp:dependency-check-maven:check \
@@ -66,6 +65,8 @@ jobs:
             -DfailBuildOnCVSS=7
 
       - name: Dependency-Check (part3)
+        id: dc3
+        continue-on-error: true
         shell: bash
         run: |
           bash ./mvnw -B -f lab1/part3/pom.xml org.owasp:dependency-check-maven:check \
@@ -76,8 +77,9 @@ jobs:
             -Dformat=HTML \
             -DfailBuildOnCVSS=7
 
+      # Remote GitHub: upload artifacts; Local act: skip to avoid ACTIONS_RUNTIME_TOKEN issue
       - name: Upload reports
-        if: always()
+        if: ${{ always() && !env.ACT }}
         uses: actions/upload-artifact@v4
         with:
           name: dependency-check-reports
@@ -86,3 +88,13 @@ jobs:
             lab1/part2/target/dependency-check-report.*
             lab1/part3/target/dependency-check-report.*
           if-no-files-found: ignore
+
+      - name: Fail if any dependency-check failed
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          failed=0
+          [ "${{ steps.dc1.outcome }}" = "failure" ] && echo "part1 failed" && failed=1
+          [ "${{ steps.dc2.outcome }}" = "failure" ] && echo "part2 failed" && failed=1
+          [ "${{ steps.dc3.outcome }}" = "failure" ] && echo "part3 failed" && failed=1
+          exit $failed

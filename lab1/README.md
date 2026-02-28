@@ -24,6 +24,24 @@
 2. [Часть 2](part2/src/test/java/itmo/lab1/SkewHeapTest.java)
 3. [Часть 3](part3/src/test/java/itmo/lab1/StoryTest.java)
 
+## Допольнительные задачи
+
+SCA (Software Composition Analysis)
+
+Настройте проверку зависимостей на известные уязвимости. Используйте OWASP Dependency-Check или Snyk. Настройте step в pipeline, который будет запускать сканер и выдавать отчет.
+
+## Отчеты
+
+**Отчеты базовых частей** находятся в `part*/target/site/**`, [например](./part1/target/site/). Они созданы с помощью такой команды:
+```bash
+mvn clean verify site
+```
+Открой `index.html` с помощью `Open Live Server` чтобы читать отчет. 
+
+**Отчеты доп. частей** находятся в `part*/target/dependency-check-report.html`, [например](./part1/target/). Они созданы с помощью `Github Actions`. 
+
+Открой `dependency-check-report.html` с помощью `Open Live Server` чтобы читать отчет. 
+
 ## Вопросы к защите лабораторной работы:
 
 * Понятие тестирования ПО. Основные определения.
@@ -36,17 +54,3 @@
 * Таблицы решений и таблицы переходов.
 * Регрессионное тестирование.
 * Библиотека JUnit5. Особенности API. Класс `junit.framework.`.
-
-## Допольнительные задачи
-
-SCA (Software Composition Analysis)
-
-Настройте проверку зависимостей на известные уязвимости. Используйте OWASP Dependency-Check или Snyk. Настройте step в pipeline, который будет запускать сканер и выдавать отчет.
-
-## Note
-
-Create report in target/site/**:
-```bash
-mvn clean verify site
-```
-Open index.html with Live Server to see the report

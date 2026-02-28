@@ -7,7 +7,7 @@
 **/target/surefire-reports/
 **/target/test-classes
 
-lab1/.vscode
+**/.vscode
 
 .dc-data
 .secrets
