@@ -32,13 +32,17 @@ SCA (Software Composition Analysis)
 
 ## Отчеты
 
-**Отчеты базовых частей** находятся в `part*/target/site/**`, [например](./part1/target/site/). Они созданы с помощью такой команды:
+### Базовые части
+
+Отчеты находятся в `part*/target/site/index.html`, [например](./part1/target/site/). Они созданы с помощью такой команды:
 ```bash
 mvn clean verify site
 ```
 Открой `index.html` с помощью `Open Live Server` чтобы читать отчет. 
 
-**Отчеты доп. частей** находятся в `part*/target/dependency-check-report.html`, [например](./part1/target/). Они созданы с помощью `Github Actions`. 
+### доп. часть
+
+Отчеты находятся в `part*/target/dependency-check-report.html`, [например](./part1/target/) или надены в разделе `Artifacts` в `GitHub Actions Workflows`. Они созданы с помощью `Github Actions`. 
 
 Открой `dependency-check-report.html` с помощью `Open Live Server` чтобы читать отчет. 
 

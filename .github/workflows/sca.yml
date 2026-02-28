@@ -49,7 +49,8 @@ jobs:
             -DnvdApiDelay=2000 \
             -DnvdMaxRetryCount=30 \
             -Dformat=HTML \
-            -DfailBuildOnCVSS=7
+            -DfailBuildOnCVSS=7 \
+            -DskipTestScope=false
 
       - name: Dependency-Check (part2)
         id: dc2
@@ -62,7 +63,8 @@ jobs:
             -DnvdApiDelay=2000 \
             -DnvdMaxRetryCount=30 \
             -Dformat=HTML \
-            -DfailBuildOnCVSS=7
+            -DfailBuildOnCVSS=7 \
+            -DskipTestScope=false
 
       - name: Dependency-Check (part3)
         id: dc3
@@ -75,7 +77,8 @@ jobs:
             -DnvdApiDelay=2000 \
             -DnvdMaxRetryCount=30 \
             -Dformat=HTML \
-            -DfailBuildOnCVSS=7
+            -DfailBuildOnCVSS=7 \
+            -DskipTestScope=false
 
       # Remote GitHub: upload artifacts; Local act: skip to avoid ACTIONS_RUNTIME_TOKEN issue
       - name: Upload reports
