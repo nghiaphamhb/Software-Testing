@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang=""><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SkewHeap.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">part2</a> &gt; <a href="index.source.html" class="el_package">itmo.lab1</a> &gt; <span class="el_source">SkewHeap.java</span></div><h1>SkewHeap.java</h1><pre class="source lang-java linenums">package itmo.lab1;
+
+/**
+ * Skew Heap implementation
+ * Min-heap
+ * Methods: merge, insert, removeMin
+ */
+public class SkewHeap 
+{
+    private Node root;
+
+<span class="fc" id="L12">    public SkewHeap() {</span>
+<span class="fc" id="L13">        this.root = null;</span>
+<span class="fc" id="L14">    }</span>
+
+<span class="fc" id="L16">    public SkewHeap(int key){</span>
+<span class="fc" id="L17">        this.root = new Node(key);</span>
+<span class="fc" id="L18">    }</span>
+
+    public Node root(){
+<span class="fc" id="L21">        return root;</span>
+    }
+
+    public boolean isEmpty(){
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        return root == null;</span>
+    }
+
+    public static Node merge(Node a, Node b, Tracer t){
+        // P1: a == null
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if(a == null) {</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">            if(t != null) t.hit(&quot;P1&quot;);</span>
+<span class="fc" id="L32">            return b;</span>
+        }
+
+        // P2: b == null
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if (b == null) {</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">            if(t != null) t.hit(&quot;P2&quot;);</span>
+<span class="fc" id="L38">            return a;</span>
+        }
+
+        // P3: root swap
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (a.key &gt; b.key) {</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            if(t != null) t.hit(&quot;P3&quot;);</span>
+<span class="fc" id="L44">            Node temp = a;</span>
+<span class="fc" id="L45">            a = b;</span>
+<span class="fc" id="L46">            b = temp;</span>
+<span class="fc" id="L47">        } else {</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">            if(t != null) t.hit(&quot;P3N&quot;);</span>
+        }
+
+        // P4: recursive merge to the RIGHT
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if(t != null) t.hit(&quot;P4&quot;);</span>
+<span class="fc" id="L53">        a.right = merge(a.right, b, t);</span>
+
+        // P5: swap children (the &quot;skew&quot; step)
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if(t != null) t.hit(&quot;P5&quot;);</span>
+<span class="fc" id="L57">        Node temp = a.left;</span>
+<span class="fc" id="L58">        a.left = a.right;</span>
+<span class="fc" id="L59">        a.right = temp;</span>
+
+        // P6: return
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if (t != null) t.hit(&quot;P6&quot;);</span>
+<span class="fc" id="L63">        return a;</span>
+    }
+
+    public void insert(int key, Tracer t){
+<span class="fc" id="L67">        Node x = new Node(key);</span>
+<span class="fc" id="L68">        root = merge(root, x, t);</span>
+<span class="fc" id="L69">    }</span>
+
+    public int removeMin(Tracer t) {
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if (root == null) throw new IllegalStateException(&quot;heap is empty&quot;);</span>
+<span class="fc" id="L73">        int min = root.key;</span>
+<span class="fc" id="L74">        root = merge(root.left, root.right, t);</span>
+<span class="fc" id="L75">        return min;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

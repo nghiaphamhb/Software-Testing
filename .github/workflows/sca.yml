@@ -1,0 +1,88 @@
+name: SCA - OWASP Dependency-Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  dependency-check:
+    runs-on: ubuntu-latest
+
+    env:
+      # - remote: set in GitHub Secrets
+      # - local: export NVD_API_KEY in terminal or get from secret file
+      NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+
+      # dir to cache data into it
+      DC_DATA_DIR: ${{ github.workspace }}/.dc-data
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Prepare Maven Wrapper
+        shell: bash
+        run: |
+          test -f ./mvnw || (echo "mvnw not found. Add Maven Wrapper to repo." && exit 1)
+          chmod +x ./mvnw || true
+          bash ./mvnw -v
+
+      # Cache Dependency-Check data dir
+      - name: Cache Dependency-Check data
+        uses: actions/cache@v4
+        with:
+          path: .dc-data
+          key: dependency-check-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            dependency-check-${{ runner.os }}-
+
+      - name: Dependency-Check (part1)
+        shell: bash
+        run: |
+          bash ./mvnw -B -f lab1/part1/pom.xml org.owasp:dependency-check-maven:check \
+            -DdataDirectory="${DC_DATA_DIR}" \
+            -DnvdApiKey="${NVD_API_KEY}" \
+            -DnvdApiDelay=2000 \
+            -DnvdMaxRetryCount=30 \
+            -Dformat=HTML \
+            -DfailBuildOnCVSS=7
+
+      - name: Dependency-Check (part2)
+        shell: bash
+        run: |
+          bash ./mvnw -B -f lab1/part2/pom.xml org.owasp:dependency-check-maven:check \
+            -DdataDirectory="${DC_DATA_DIR}" \
+            -DnvdApiKey="${NVD_API_KEY}" \
+            -DnvdApiDelay=2000 \
+            -DnvdMaxRetryCount=30 \
+            -Dformat=HTML \
+            -DfailBuildOnCVSS=7
+
+      - name: Dependency-Check (part3)
+        shell: bash
+        run: |
+          bash ./mvnw -B -f lab1/part3/pom.xml org.owasp:dependency-check-maven:check \
+            -DdataDirectory="${DC_DATA_DIR}" \
+            -DnvdApiKey="${NVD_API_KEY}" \
+            -DnvdApiDelay=2000 \
+            -DnvdMaxRetryCount=30 \
+            -Dformat=HTML \
+            -DfailBuildOnCVSS=7
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-check-reports
+          path: |
+            lab1/part1/target/dependency-check-report.*
+            lab1/part2/target/dependency-check-report.*
+            lab1/part3/target/dependency-check-report.*
+          if-no-files-found: ignore

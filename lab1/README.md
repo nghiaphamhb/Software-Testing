@@ -37,6 +37,12 @@
 * Регрессионное тестирование.
 * Библиотека JUnit5. Особенности API. Класс `junit.framework.`.
 
+## Допольнительные задачи
+
+SCA (Software Composition Analysis)
+
+Настройте проверку зависимостей на известные уязвимости. Используйте OWASP Dependency-Check или Snyk. Настройте step в pipeline, который будет запускать сканер и выдавать отчет.
+
 ## Note
 
 Create report in target/site/**:

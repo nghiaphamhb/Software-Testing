@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+part3,itmo.lab1.states,Emotion,0,15,0,0,0,3,0,1,0,1
+part3,itmo.lab1.states,EngineState,0,15,0,0,0,3,0,1,0,1
+part3,itmo.lab1.events,GearShift,0,21,0,0,0,8,0,4,0,4
+part3,itmo.lab1.things,Experience,0,25,0,4,0,8,0,5,0,3
+part3,itmo.lab1.things,Remark,0,19,0,4,0,6,0,4,0,2
+part3,itmo.lab1.things,FordPrefect,0,29,0,4,0,4,0,4,0,2
+part3,itmo.lab1.things,Car,0,23,0,0,0,8,0,5,0,5
+part3,itmo.lab1.things,Driver,0,75,0,8,0,17,0,7,0,3
