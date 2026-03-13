@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+lab2,functions.log,Log5,0,24,0,2,0,8,0,4,0,3
+lab2,functions.log,Log10,0,24,0,2,0,8,0,4,0,3
+lab2,functions.log,Ln,0,80,0,10,0,20,0,8,0,3
+lab2,functions.log,Log2,0,24,0,2,0,8,0,4,0,3
+lab2,functions,FunctionSystem,0,146,0,20,0,33,0,14,0,4
+lab2,utils,CsvExporter,0,33,0,2,0,6,0,3,0,2
+lab2,functions.trig,Cos,0,13,0,0,0,4,0,2,0,2
+lab2,functions.trig,Sin,0,87,0,8,0,23,0,7,0,3
+lab2,functions.trig,Sec,0,25,0,4,0,7,0,4,0,2
+lab2,functions.trig,Tan,0,31,0,4,0,8,0,4,0,2
+lab2,stubs,TableStub,0,16,0,0,0,4,0,2,0,2

@@ -1,4 +1,4 @@
-# Лабораторная работа #1
+# Лабораторная работа 1
 
 <p align="center">
   <img src="../assets/first_lab.gif" alt="first lab" width="50%" height="200px">
