@@ -4,7 +4,6 @@ import functions.MathFunction;
 
 public class Log10 implements MathFunction{
     private final MathFunction ln;
-    private static final double LN_10 = Math.log(10.0);
 
     public Log10(MathFunction ln) {
         this.ln = ln;
@@ -14,9 +13,10 @@ public class Log10 implements MathFunction{
     public double calculate(double x) {
         // log_10(x) = ln(x)/ln(10)
         double lnValue = ln.calculate(x);
+        double ln10Value = ln.calculate(10.0);
         if (Double.isNaN(lnValue)) {
             return Double.NaN;
         }
-        return lnValue / LN_10;
+        return lnValue / ln10Value;
     }
 }

@@ -4,20 +4,20 @@ import functions.MathFunction;
 
 public class Log5 implements MathFunction{
     private final MathFunction ln;
-<span class="fc" id="L7">    private static final double LN_5 = Math.log(5.0);</span>
 
-<span class="fc" id="L9">    public Log5(MathFunction ln) {</span>
-<span class="fc" id="L10">        this.ln = ln;</span>
-<span class="fc" id="L11">    }</span>
+<span class="fc" id="L8">    public Log5(MathFunction ln) {</span>
+<span class="fc" id="L9">        this.ln = ln;</span>
+<span class="fc" id="L10">    }</span>
 
     @Override
     public double calculate(double x) {
         // log_5(x) = ln(x)/ln(5)
-<span class="fc" id="L16">        double lnValue = ln.calculate(x);</span>
+<span class="fc" id="L15">        double lnValue = ln.calculate(x);</span>
+<span class="fc" id="L16">        double ln5Value = ln.calculate(5.0);</span>
 <span class="fc bfc" id="L17" title="All 2 branches covered.">        if (Double.isNaN(lnValue)) {</span>
 <span class="fc" id="L18">            return Double.NaN;</span>
         }
-<span class="fc" id="L20">        return lnValue / LN_5;</span>
+<span class="fc" id="L20">        return lnValue / ln5Value;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

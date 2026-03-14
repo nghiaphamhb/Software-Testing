@@ -2,23 +2,30 @@
 
 import functions.MathFunction;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-<span class="fc" id="L9">public class CsvExporter {</span>
+<span class="fc" id="L10">public class CsvExporter {</span>
     public void export(MathFunction function,
-                double start,
-                double end,
-                double step,
-                String fileName) throws IOException {
-<span class="fc" id="L15">        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {</span>
-<span class="fc" id="L16">            writer.println(&quot;x,result&quot;);</span>
+                       double start,
+                       double end,
+                       double step,
+                       String fileName) throws IOException {
 
-<span class="fc bfc" id="L18" title="All 2 branches covered.">            for (double x = start; x &lt;= end; x += step) {</span>
-<span class="fc" id="L19">                writer.println(x + &quot;,&quot; + function.calculate(x));</span>
+<span class="fc" id="L17">        Path path = Path.of(fileName);</span>
+<span class="pc bpc" id="L18" title="1 of 2 branches missed.">        if (path.getParent() != null) {</span>
+<span class="fc" id="L19">            Files.createDirectories(path.getParent());</span>
+        }
+
+<span class="fc" id="L22">        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path))) {</span>
+<span class="fc" id="L23">            writer.println(&quot;x,result&quot;);</span>
+
+<span class="fc bfc" id="L25" title="All 2 branches covered.">            for (double x = start; x &lt;= end; x += step) {</span>
+<span class="fc" id="L26">                writer.println(x + &quot;,&quot; + function.calculate(x));</span>
             }
         }
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L29">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

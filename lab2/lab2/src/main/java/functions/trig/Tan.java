@@ -15,9 +15,11 @@ public class Tan implements MathFunction{
     public double calculate(double x) {
         // tan(x)=sin(x)/cos(x)
         double cosValue = cos.calculate(x);
-        if (Double.isNaN(cosValue) || Math.abs(cosValue) < 1e-10) {
+        double sinvalue = sin.calculate(x);
+
+        if (Math.abs(cosValue) < 1e-10) {
             return Double.NaN;
         }
-        return sin.calculate(x) / cosValue;
+        return  sinvalue / cosValue;
     }
 }

@@ -2,17 +2,24 @@ package utils;
 
 import functions.MathFunction;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class CsvExporter {
     public void export(MathFunction function,
-                double start,
-                double end,
-                double step,
-                String fileName) throws IOException {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
+                       double start,
+                       double end,
+                       double step,
+                       String fileName) throws IOException {
+
+        Path path = Path.of(fileName);
+        if (path.getParent() != null) {
+            Files.createDirectories(path.getParent());
+        }
+
+        try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path))) {
             writer.println("x,result");
 
             for (double x = start; x <= end; x += step) {

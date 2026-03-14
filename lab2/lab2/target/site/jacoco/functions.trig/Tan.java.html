@@ -15,10 +15,12 @@ public class Tan implements MathFunction{
     public double calculate(double x) {
         // tan(x)=sin(x)/cos(x)
 <span class="fc" id="L17">        double cosValue = cos.calculate(x);</span>
-<span class="fc bfc" id="L18" title="All 4 branches covered.">        if (Double.isNaN(cosValue) || Math.abs(cosValue) &lt; 1e-10) {</span>
-<span class="fc" id="L19">            return Double.NaN;</span>
+<span class="fc" id="L18">        double sinvalue = sin.calculate(x);</span>
+
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (Math.abs(cosValue) &lt; 1e-10) {</span>
+<span class="fc" id="L21">            return Double.NaN;</span>
         }
-<span class="fc" id="L21">        return sin.calculate(x) / cosValue;</span>
+<span class="fc" id="L23">        return  sinvalue / cosValue;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

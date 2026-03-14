@@ -13,7 +13,7 @@ public class Sec implements MathFunction{
     public double calculate(double x) {
         // sec(x) = 1/cos(x)
 <span class="fc" id="L15">        double cosValue = cos.calculate(x);</span>
-<span class="fc bfc" id="L16" title="All 4 branches covered.">        if (Double.isNaN(cosValue) || Math.abs(cosValue) &lt; 1e-10) {</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        if (Math.abs(cosValue) &lt; 1e-10) {</span>
 <span class="fc" id="L17">            return Double.NaN;</span>
         }
 <span class="fc" id="L19">        return 1.0 / cosValue;</span>
