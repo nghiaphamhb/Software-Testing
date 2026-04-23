@@ -1,13 +1,25 @@
-**/target/classes/
-**/target/generated-sources/
-**/target/generated-test-sources/
-**/target/jacoco.exec
-**/target/maven-archiver/
-**/target/maven-status/
-**/target/surefire-reports/
-**/target/test-classes
+# Maven build output
+**/target/
 
-**/.vscode
+# IDE/local config
+**/.vscode/
+**/.idea/
 
 .dc-data
 .secrets
+
+# Secrets
+**/.env
+**/.env.*
+!.env.example
+
+
+# Allure generated/downloaded files
+**/.allure/
+**/allure-results/
+**/allure-report/
+
+# OS/local noise
+.DS_Store
+Thumbs.db
+*.log
