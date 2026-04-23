@@ -9,3 +9,4 @@ The course is designed to learn the basics of software testing. The basics of te
 
 ### [1️⃣ Module Testing](lab1)
 ### [2️⃣ Integration Testing](lab2)
+### [3️⃣ Functional Testing](lab3)
