@@ -38,7 +38,7 @@ public class RepositoryTest {
 
     @Test
     @Order(1)
-    @Story("UC-05: Open public repository")
+    @Story("UC-03: Checkout Public Repository")
     public void openPublicRepositoryTest() {
         repositoryPage.openRepository(USERNAME, REPO_NAME);
         assertTrue(configurator.getUrl().contains(REPO_NAME),
@@ -49,7 +49,7 @@ public class RepositoryTest {
 
     @Test
     @Order(2)
-    @Story("UC-06: Open repository issues tab")
+    @Story("UC-03: Checkout Public Repository")
     public void openRepositoryIssuesTabTest() {
         repositoryPage.clickIssuesTab();
         assertTrue(configurator.getUrl().contains("issues"),
@@ -58,7 +58,7 @@ public class RepositoryTest {
 
     @Test
     @Order(3)
-    @Story("UC-06: Open repository pull requests tab")
+    @Story("UC-03: Checkout Public Repository")
     public void openRepositoryPullRequestsTabTest() {
         repositoryPage.clickPRTab();
         assertTrue(configurator.getUrl().contains("pulls"),
@@ -67,7 +67,7 @@ public class RepositoryTest {
 
     @Test
     @Order(4)
-    @Story("UC-07: Star repository")
+    @Story("UC-04: Star/Unstar Public Repository")
     public void starRepositoryTest() {
         repositoryPage.openRepository(USERNAME, REPO_NAME);
         repositoryPage.openLoginPageByClickStarButton();
@@ -93,7 +93,7 @@ public class RepositoryTest {
 
     @Test
     @Order(5)
-    @Story("UC-07: Unstar repository")
+    @Story("UC-04:Star/Unstar Public Repository")
     public void unstarRepositoryTest() {
         assertTrue(repositoryPage.isOnRepositoryPage(USERNAME, REPO_NAME),
             "Browser should be on the target repository page before star action");

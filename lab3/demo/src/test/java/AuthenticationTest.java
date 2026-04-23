@@ -37,7 +37,7 @@ public class AuthenticationTest {
 
     @Test
     @Order(1)
-    @Story("UC-01: Open login page from landing page")
+    @Story("UC-01: Authentication")
     public void openLoginPageFromLandingTest() {
         landingPage.open();
         assertTrue(configurator.getUrl().startsWith("https://github.com"),
@@ -56,7 +56,7 @@ public class AuthenticationTest {
 
     @Test
     @Order(2)
-    @Story("UC-02: Invalid login")
+    @Story("UC-01: Authentication")
     public void invalidLoginTest() {
         loginPage.login("fakeUsername", "fakePassword");
 
@@ -68,7 +68,7 @@ public class AuthenticationTest {
 
     @Test
     @Order(3)
-    @Story("UC-03: Valid login")
+    @Story("UC-01: Authentication")
     public void validLoginTest() {
         Dotenv dotenv = Dotenv.load();
         String username = dotenv.get("GITHUB_USERNAME");
@@ -85,7 +85,7 @@ public class AuthenticationTest {
 
     @Test
     @Order(4)
-    @Story("UC-03: Sign out")
+    @Story("UC-01: Authentication")
     public void logOut() {
         homePage.signOut();    
         assertTrue(landingPage.getSignInButton().isDisplayed(),

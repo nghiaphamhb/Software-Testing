@@ -34,7 +34,7 @@ public class SearchTest {
 
     @Test
     @Order(1)
-    @Story("UC-04: Search GitHub")
+    @Story("UC-02: Find GitHub Content")
     public void searchRepositoryByKeywordTest() {
         landingPage.open();
         landingPage.search(KEY_WORD);
@@ -44,7 +44,7 @@ public class SearchTest {
 
     @Test
     @Order(2)
-    @Story("UC-04: Open best search result")
+    @Story("UC-02: Find GitHub Content")
     public void openBestSearchResult() {
         homePage.openBestSearchResult();
         assertTrue(configurator.getUrl().startsWith("https://github.com/" + KEY_WORD),

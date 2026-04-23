@@ -19,7 +19,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  * + JavascriptExecutor
  */
 public class SeleniumConfigurator {
-    private static final String CHROMEDRIVER_VERSION = " 147.0.7727.102";
+    private static final String CHROMEDRIVER_VERSION = "147.0.7727.102";
 
     private static final Duration IMPLICIT_WAIT = Duration.ZERO;
     private static final Duration EXPLICIT_WAIT = Duration.ofSeconds(20);

@@ -43,7 +43,7 @@ public class ProfileTest {
 
     @Test
     @Order(1)
-    @Story("UC-08: Open own profile")
+    @Story("UC-05: Edit Own Profile")
     public void openOwnProfileFromUserMenuTest() {
         landingPage.open();
         assertTrue(configurator.getUrl().startsWith("https://github.com"),
@@ -69,7 +69,7 @@ public class ProfileTest {
 
     @Test
     @Order(2)
-    @Story("UC-08: Edit profile bio")
+    @Story("UC-05: Edit Own Profile")
     public void editProfileBioTest() {
         assertTrue(profilePage.isDisplayedEditProfileButton(), "Profile page should have Edit profile button before editing bio");
 

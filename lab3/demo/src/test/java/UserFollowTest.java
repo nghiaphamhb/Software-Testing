@@ -35,7 +35,7 @@ public class UserFollowTest {
 
     @Test
     @Order(1)
-    @Story("UC-09: Open public user profile")
+    @Story("UC-06: Follow/Unfollow Other User")
     public void openPublicUserProfileTest() {
         userPage.openUserProfile(TARGET_USERNAME);
 
@@ -45,7 +45,7 @@ public class UserFollowTest {
 
     @Test
     @Order(2)
-    @Story("UC-09: Follow and unfollow user")
+    @Story("UC-06: Follow/Unfollow Other User")
     public void followAndUnfollowUserTest() {
         userPage.openLoginPageByClickFollowButton();
         assertTrue(configurator.getUrl().contains("login"));
